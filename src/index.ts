@@ -103,7 +103,11 @@ class PoopBot {
     ];
 
     const response = responses[Math.floor(Math.random() * responses.length)];
-    await message.reply(`${response} You've pooped ${this.poopData[userId].count} times!`);
+    const replyMessage = await message.reply(`${response} You've pooped ${this.poopData[userId].count} times!`);
+    
+    // React with poop emoji to both the original message and our reply
+    await message.react('💩');
+    await replyMessage.react('💩');
   }
 
   private async showLeaderboard(interaction: any) {
